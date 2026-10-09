@@ -1,0 +1,32 @@
+
+
+name: CI/CD
+
+on:
+  push:
+    branches : [main]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: recuperer le code
+        uses: actions/checkout@v4
+
+      - name: installer python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: installer les dependances
+        run: |
+          pip install -r requirements.txt
+
+      - name: Lancer les tests
+        run: |
+          pytest
+
+
+
