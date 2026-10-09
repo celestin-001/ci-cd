@@ -44,7 +44,7 @@ jobs:
 
       - name: construire l'image docker
         run: |
-          docker build -t tp-cicd .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/tp-cicd:latest .
       - name: Publier l'image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/tp-cicd:latest
